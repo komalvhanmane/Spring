@@ -1,0 +1,29 @@
+package com.connection;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+
+public class DBConnection {
+//	static Connection con ;
+	public static Connection getC() {
+	Connection con=null;
+	String User="root";
+	String Pass="123456789";
+	String JDBC_Driver="com.mysql.cj.jdbc.Driver";
+	String url="jdbc:mysql://localhost:3306/mentor_meeting?useSSL=false";
+	try{
+		Class.forName(JDBC_Driver);
+		con=DriverManager.getConnection(url,User,Pass);
+			System.out.println("connection established");
+		} catch (Exception e) {
+			System.out.println("Error occured");
+			System.out.println(e.getMessage());
+		}
+		return con;
+	}
+	
+	public static void main(String[] args) {
+		getC();
+		System.out.println(con);
+	}
+}
